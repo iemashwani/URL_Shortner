@@ -1,7 +1,8 @@
 const express = require("express");
 const { connectToMongoDB } = require("./connect");
-const urlRoutes = require("./routes/url");
 const URL = require("./models/url");
+
+const urlRoute = require("./routes/url");
 
 const app = express();
 const PORT = 8001;
@@ -12,7 +13,7 @@ connectToMongoDB(
 
 app.use(express.json());
 
-app.use("/url", urlRoutes);
+app.use("/url", urlRoute);
 
 app.get("/:shortId", async (req, res) => {
   const shortId = req.params.shortId;
